@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>조카모바일보안</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="보안어플"/>
+    <link href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css,npm/pickerjs@1.2.1/dist/picker.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/combine/npm/pickerjs@1.2.1/dist/picker.min.js,npm/easytimer.js@4.3.0/dist/easytimer.min.js"></script>
+
+    <!-- 주소창 등의 웹 브라우저 UI를 표시하지 않기 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 상태 바의 스타일을 지정 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- 홈 화면에서 표시되는 앱 이름을 지정 -->
+    <meta name="apple-mobile-web-app-title" content="JOCA 모바일보안">
+    <!-- 홈 화면에서 표시되는 앱 아이콘을 지정 -->
+    <link rel="apple-touch-icon" href="icons/icon-152x152.png">
+
+    <style>
+      .header {
+        background-color:#1583C6;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px 0 25px;
+      }
+      .title {
+        font-weight: 900;
+        font-size: 30px;
+        padding: 0 15px 5px 15px;
+        color: #fff;
+      }
+      .content {
+        background-color: #fff;
+        padding: 45px 0 25px 0;
+        text-align: center;
+
+      }
+      .spinner {
+        width: 270px;
+        padding-top: 40px;
+      }
+
+      .info {
+        display: flex;
+        justify-content: startS;
+        padding: 10px 0 0 15px;
+        text-align: left;
+      }
+      .info-text {
+        padding: 30px 0 0 10px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 0.5;
+        color: #535154;
+      }
+      .clock-wrap {
+        text-align: center;
+        background-color: #04455C;
+      }
+      .clock {
+        font-weight: 600;
+        font-size: 18px;
+        color: #fff;
+        background-color: #04455C;
+        padding : 10px 0;
+        text-align: justify;
+        width: 230px;
+        margin: auto;
+        padding-left: 20px;
+      }
+
+      .checkout-btn {
+        background-color: #036C8D;
+        color: #fff;
+        text-align: center;
+        padding: 30px 0 40px 0;
+        font-weight: 600;
+        font-size: 23px;
+      }
+
+    </style>
+  </head>
+  <body style="background-color: #1583C6;">
+    <header class="header">       
+      <div class="nav">
+      <img src="icons/menu.png" style="height: 30px; margin: 7px 0">
+      <img src="icons/refresh.png" style="height: 45px;"/>
+      </div>
+      <div class="title">보호정책</div>
+    </header>
+    <main role="main">
+      <div class="content">
+        <img src="icons/logo.png" style="width: 170px;">
+        <img src="icons/spinner.gif" class="spinner">
+        <div class="info">
+          <img src="icons/apple.png" style="object-fit: contain; width: 60px;">
+          <div class="info-text">
+            <p>개발 입실정책</p>
+            <p style="font-weight: 800; color:#AD080D;">단말기를 안전하게 보호합니다</p>
+          </div>
+        </div>
+      </div>
+      <div class="clock-wrap">
+        <div class="clock" id="clock">
+          clock
+        </div>
+      </div>
+      <div class="checkout-btn">
+        퇴실신청
+      </div>
+
+    </main>
+    <script>
+        var Target = document.getElementById("clock");
+        function addZero(n) {
+          return n < 10 ? '0' + n : n;
+        }
+        function clock() {
+            var time = new Date();
+            var year =  time.getFullYear().toString()
+            var month = addZero(time.getMonth() + 1);
+            var date =  addZero(time.getDate());
+            var day = time.getDay();
+
+            var hours = time.getHours();
+            var minutes = time.getMinutes();
+            var seconds = time.getSeconds();
+
+            Target.innerText = 
+            `${year}-${month}-${date} ` +
+            `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+                
+        }
+        clock();
+        setInterval(clock, 1000); // 1초마다 실행
+    </script>
+  </body>
+</html>
